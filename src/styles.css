@@ -1,2 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
+.evn{
+    background-color: red;
+    color: lightblue;
+}
+
+.odd{
+    background-color: blue;
+    color: white;
+}
