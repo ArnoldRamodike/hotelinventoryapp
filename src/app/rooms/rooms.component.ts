@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Room, RoomList } from './rooms';
 import { CommonModule } from '@angular/common';
 import { RoomListComponent } from './room-list/room-list.component';
+import { HeaderComponent } from "../header/header.component";
 
 
 @Component({
   selector: 'app-rooms',
   standalone: true,
-  imports: [CommonModule, RoomListComponent],
+  imports: [CommonModule, RoomListComponent, HeaderComponent],
   templateUrl: './rooms.component.html',
   styleUrl: './rooms.component.css'
 })
-export class RoomsComponent {
+export class RoomsComponent implements OnInit, AfterViewInit  {
   hotelName = "Mariot hotel";
   numberOfRoom = 10;
 
@@ -23,13 +24,11 @@ export class RoomsComponent {
 
   selectedRoom! : RoomList;
 
-  roomLists : RoomList[] = [
+  roomLists : RoomList[] = [ ]
 
- ]
+ constructor () { }
 
- constructor () {
-
- }
+ @ViewChild(HeaderComponent, {static: true}) headerComponent! : HeaderComponent
 
   ngOnInit() : void {
     this.roomLists = [
@@ -64,6 +63,10 @@ export class RoomsComponent {
         rating: 3.5
     },
     ]
+  }
+
+  ngAfterViewInit(): void {
+    this.headerComponent.title = "Welcome on border dick licker!"
   }
 
   hidrooms =false;
