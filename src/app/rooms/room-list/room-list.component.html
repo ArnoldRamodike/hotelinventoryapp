@@ -1,4 +1,4 @@
-Room List:
+ <h2>{{title}} </h2>
 
 <table class="table">
 <tr>
@@ -10,6 +10,7 @@ Room List:
 <th>Amenetis</th>
 <th>Checkin Time</th>
 <th>Ratings</th>
+<th>Select Room</th>
 </tr>
 
 <tr [ngClass]="e ? 'evn' : 'odd'"
@@ -22,6 +23,11 @@ Room List:
     <td>{{ room.ameneties }}</td>
     <td>{{ room.checkoutTime  | date : 'dd-MMMM-YYYY'}}</td>
     <td>{{room.rating | number : '1.0-0' }}</td>
+    <td>
+        <button class="btn btn-primary" (click)="selectRoom(room)">
+            Select
+        </button>
+    </td>
    
 </tr>
 </table>

@@ -1,16 +1,23 @@
 
 <h1>Welcome to {{hotelName}}</h1>
 <div [hidden]="hidrooms">
-    NUmber of rooms
+    Number of rooms
     <div [innerText]="numberOfRoom"></div>
-    <p>RSooms works!</p>
 </div>
 <!-- {{roomLists |json}} -->
 
 {{rooms.totalRooms ?? "No rooms"}}
 
+<div class="" *ngIf="selectRoom">
+    {{selectRoom  | json}}
+</div>
+
+<div class="">
+    <button (click)="addRoom()">Add room</button>
+</div>
+
 <div  *ngIf="rooms.totalRooms! > 0">
-  <app-room-list [rooms] = "roomLists"></app-room-list>
+  <app-room-list [rooms] = "roomLists" (selectedRoom)="selectRoom($event)" [title]="title"></app-room-list>
 </div>
 
 <button (click)="toggle()">Toggle</button>
