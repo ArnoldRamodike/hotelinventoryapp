@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { RoomsComponent } from "./rooms/rooms.component";
 import { CommonModule } from '@angular/common';
@@ -10,14 +10,20 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit {
   title = 'hotelinventryapp';
   role = 'Admin';
+  
+  @ViewChild('name', {static: true}) name!: ElementRef;
 
-  @ViewChild('user', {read: ViewContainerRef}) vcr! : ViewContainerRef;
+  ngOnInit(): void {
+    this.name.nativeElement.innerText = "Polly hotels";
+  }
 
-  ngAfterViewInit(): void { 
-    const componentRef = this.vcr.createComponent(RoomsComponent);
-    componentRef.instance.numberOfRoom = 50;
-   }
+  // @ViewChild('user', {read: ViewContainerRef}) vcr! : ViewContainerRef;
+
+  // ngAfterViewInit(): void { 
+  //   const componentRef = this.vcr.createComponent(RoomsComponent);
+  //   componentRef.instance.numberOfRoom = 50;
+  //  }
 }
