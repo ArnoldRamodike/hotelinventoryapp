@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { RoomsComponent } from "./rooms/rooms.component";
 import { CommonModule } from '@angular/common';
@@ -10,8 +10,14 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'hotelinventryapp';
+  role = 'Admin';
 
-  role = 'Admin'
+  @ViewChild('user', {read: ViewContainerRef}) vcr! : ViewContainerRef;
+
+  ngAfterViewInit(): void { 
+    const componentRef = this.vcr.createComponent(RoomsComponent);
+    componentRef.instance.numberOfRoom = 50;
+   }
 }
