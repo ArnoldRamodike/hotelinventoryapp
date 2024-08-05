@@ -2,11 +2,12 @@ import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, OnInit, V
 import { RouterOutlet } from '@angular/router';
 import { RoomsComponent } from "./rooms/rooms.component";
 import { CommonModule } from '@angular/common';
+import { ContainerComponent } from "./container/container.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RoomsComponent, CommonModule],
+  imports: [RouterOutlet, RoomsComponent, CommonModule, ContainerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

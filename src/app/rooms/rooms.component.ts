@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, QueryList, ViewChild, viewChildren } from '@angular/core';
 import { Room, RoomList } from './rooms';
 import { CommonModule } from '@angular/common';
 import { RoomListComponent } from './room-list/room-list.component';
@@ -28,7 +28,9 @@ export class RoomsComponent implements OnInit, AfterViewInit  {
 
  constructor () { }
 
- @ViewChild(HeaderComponent, {static: true}) headerComponent! : HeaderComponent
+ @ViewChild(HeaderComponent, {static: true}) headerComponent! : HeaderComponent;
+
+ @ViewChild(HeaderComponent) HeaderChildrenComponent!: QueryList<HeaderComponent>
 
   ngOnInit() : void {
     this.roomLists = [
@@ -67,6 +69,8 @@ export class RoomsComponent implements OnInit, AfterViewInit  {
 
   ngAfterViewInit(): void {
     this.headerComponent.title = "Welcome on border dick licker!"
+
+    this.HeaderChildrenComponent.last.title = "LAnce stroll!"
   }
 
   hidrooms =false;
