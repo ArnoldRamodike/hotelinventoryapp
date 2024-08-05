@@ -1,8 +1,5 @@
 
 <!-- <h1>Welcome to {{hotelName}}</h1> -->
-
-<app-header></app-header>
-<app-header></app-header>
 <app-header></app-header>
 <div [hidden]="hidrooms">
     Number of rooms
@@ -20,7 +17,7 @@
     <button (click)="addRoom()">Add room</button>
 </div>
 
-<div  *ngIf="rooms.totalRooms! > 0">
+<div  *ngIf="rooms.totalRooms">
   <app-room-list [rooms] = "roomLists" (selectedRoom)="selectRoom($event)" [title]="title"></app-room-list>
 </div>
 
