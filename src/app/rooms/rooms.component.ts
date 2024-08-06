@@ -1,9 +1,9 @@
-import { AfterViewInit, Component, OnInit, QueryList, ViewChild, viewChildren } from '@angular/core';
+import { AfterViewInit, Component, OnInit, QueryList, SkipSelf, ViewChild, ViewChildren, viewChildren } from '@angular/core';
 import { Room, RoomList } from './rooms';
 import { CommonModule } from '@angular/common';
 import { RoomListComponent } from './room-list/room-list.component';
 import { HeaderComponent } from "../header/header.component";
-import { RoomsService } from './rooms.service';
+import { RoomsService } from './services/rooms.service';
 
 
 @Component({
@@ -11,7 +11,8 @@ import { RoomsService } from './rooms.service';
   standalone: true,
   imports: [CommonModule, RoomListComponent, HeaderComponent],
   templateUrl: './rooms.component.html',
-  styleUrl: './rooms.component.css'
+  styleUrl: './rooms.component.css',
+
 })
 export class RoomsComponent implements OnInit, AfterViewInit {
   hotelName = "Mariot hotel";
@@ -30,11 +31,11 @@ export class RoomsComponent implements OnInit, AfterViewInit {
 
   @ViewChild(HeaderComponent, { static: true }) headerComponent!: HeaderComponent;
 
-  @ViewChild(HeaderComponent) HeaderChildrenComponent!: QueryList<HeaderComponent>
+  @ViewChildren(HeaderComponent) HeaderChildrenComponent!: QueryList<HeaderComponent>
 
   // roomService  = new RoomService();
 
-  constructor(private roomsService: RoomsService) { }
+  constructor(@SkipSelf() private roomsService: RoomsService) { }
 
   ngOnInit(): void {
     this.roomLists = this.roomsService.getRooms();
