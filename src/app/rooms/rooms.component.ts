@@ -38,13 +38,15 @@ export class RoomsComponent implements OnInit, AfterViewInit {
   constructor(@SkipSelf() private roomsService: RoomsService) { }
 
   ngOnInit(): void {
-    this.roomLists = this.roomsService.getRooms();
+    this.roomsService.getRooms().subscribe(rooms => {
+      this.roomLists = rooms;
+    });
   }
 
   ngAfterViewInit(): void {
-    this.headerComponent.title = "Welcome on border dick licker!"
+    this.headerComponent.title = "Welcome on border, dick licker!"
 
-    this.HeaderChildrenComponent.last.title = "LAnce stroll!"
+    this.HeaderChildrenComponent.last.title = "Lance stroll!"
   }
 
   hidrooms = false;
@@ -60,7 +62,7 @@ export class RoomsComponent implements OnInit, AfterViewInit {
 
   addRoom() {
     const room: RoomList = {
-      roomNumber: 7,
+      roomNumber: '5',
       roomType: "mountain",
       ameneties: "pets",
       price: 200,

@@ -15,8 +15,8 @@ import { EmployeeComponent } from "./employee/employee.component";
 export class AppComponent implements OnInit {
   title = 'hotelinventryapp';
   role = 'Admin';
-  
-  @ViewChild('name', {static: true}) name!: ElementRef;
+
+  @ViewChild('name', { static: true }) name!: ElementRef;
 
   ngOnInit(): void {
     this.name.nativeElement.innerText = "Polly hotels";
