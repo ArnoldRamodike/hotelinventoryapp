@@ -1,12 +1,12 @@
-export interface Room{
+export interface Room {
     totalRooms?: number;
     availableRooms: Number;
     bookedRooms: number;
 
 }
 
-export interface RoomList{
-    roomNumber?: number;
+export interface RoomList {
+    roomNumber?: string;
     roomType: string;
     ameneties: string;
     price: number;
